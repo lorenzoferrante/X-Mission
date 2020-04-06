@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SplitViewController: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        #if targetEnvironment(macCatalyst)
+        self.navigationController?.isNavigationBarHidden = true
+        #endif
     }
 
-
 }
-
