@@ -28,6 +28,7 @@ class ListViewController: UITableViewController, RPCClienteDelegate {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -93,6 +94,10 @@ class ListViewController: UITableViewController, RPCClienteDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "emptyCell") as! EmptyTableViewCell<EmptyCell>
         cell.host(parent: self)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

@@ -24,6 +24,7 @@ class AddTorrentViewController: UITableViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.isTranslucent = false
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancel))
         
         setUpTabvleView()
     }
@@ -64,6 +65,10 @@ class AddTorrentViewController: UITableViewController, UITextFieldDelegate {
         if let magnet = magnetLink {
             NotificationCenter.default.post(name: .didGotMagnetLink, object: nil, userInfo: ["magnet": magnet])
         }
+        self.dismiss(animated: true) {}
+    }
+    
+    func cancel() {
         self.dismiss(animated: true) {}
     }
 }
