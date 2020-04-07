@@ -61,7 +61,7 @@ struct TorrentView: View {
                     }
                     
                     Button(action: {
-                        print("delete")
+                        NotificationCenter.default.post(name: .needRemoveTorrent, object: nil, userInfo: ["id": self.torrent.data.id!])
                     }) {
                         Image(systemName: "trash.fill")
                             .foregroundColor(.red)

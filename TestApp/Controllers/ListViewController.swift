@@ -54,6 +54,7 @@ class ListViewController: UITableViewController, RPCClienteDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(showLogsView), name: .needOpenLogView, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showSettingsView), name: .needOpenSettingsView, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(closeOnBoard), name: .needCloseOnBoard, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeTorrent(_:)), name: .needRemoveTorrent, object: nil)
         
         self.navigationController?.navigationBar.isTranslucent = false
         
@@ -89,7 +90,8 @@ class ListViewController: UITableViewController, RPCClienteDelegate {
             return cell
         }
         
-        if let list = torrentList {
+        if let list = torrentList,
+                list.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "torrentCell") as! HostingTorrent<TorrentView>
             cell.host(parent: self, obj: TorrentObserved(torrentData: list[indexPath.row]))
             return cell
@@ -162,5 +164,26 @@ extension ListViewController {
     
     private func closeOnBoard() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func removeTorrent(_ noti: Notification) {
+        if let userInfo = noti.userInfo {
+            if let torrentId = userInfo["id"] as? Int {
+                let alertController = UIAlertController(title: "Delete Torrent",
+                                                        message: "Are you sure you want to delete this torrent?", preferredStyle: .actionSheet)
+                alertController.addAction(UIAlertAction(title: "Delete",
+                                                        style: .destructive,
+                                                        handler: { (_) in
+                                                            RPCCLient.shared.removeTorrent(id: torrentId)
+                }))
+                alertController.addAction(UIAlertAction(title: "Cancel",
+                                                        style: .cancel,
+                                                        handler: { (_) in
+                                                            self.dismiss(animated: true)
+                }))
+                
+                self.present(alertController, animated: true)
+            }
+        }
     }
 }

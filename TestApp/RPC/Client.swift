@@ -324,6 +324,66 @@ class RPCCLient: NSObject {
         }
     }
     
+    public func removeTorrent(id: Int) {
+        var req = URLRequest(url: URL(string: baseURL)!)
+        req.httpMethod = "POST"
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.setValue(sessionID, forHTTPHeaderField: "X-Transmission-Session-Id")
+        req.setValue("Basic \(loginEncoded)", forHTTPHeaderField: "Authorization")
+        
+        let reqBody = RPCRequest(method: "torrent-remove", arguments: ArgumentsReq(ids: id))
+        let encoder = JSONEncoder()
+        
+        guard let dataEncoded = try? encoder.encode(reqBody) else {
+            print("Error encoding data")
+            return
+        }
+        req.httpBody = dataEncoded
+        
+        DispatchQueue.global(qos: DispatchQoS.background.qosClass).async {
+            URLSession.shared.dataTask(with: req) { (data, response, error) in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                    self.delegate.rpcDidGotStatusCode(.ServerNotFound)
+                    return
+                }
+                
+                guard let res = response as? HTTPURLResponse else {
+                    print("No response received")
+                    self.delegate.rpcDidGotStatusCode(.ServerNotFound)
+                    return
+                }
+                
+                if self.handleResCode(statusCode: res.statusCode) == -1 {
+                    self.delegate.rpcDidGotStatusCode(.ServerNotFound)
+                    print("Error!")
+                    return
+                }
+                
+                guard let data = data else {
+                    print("No data received")
+                    self.delegate.rpcDidGotTorrentStatus([])
+                    return
+                }
+                
+                Utils.shared.log(msgType: .TorrentPaused, type: .INFO)
+                
+                let decoder = JSONDecoder()
+                guard let _ = try? decoder.decode(RPCResponse.self, from: data) else {
+                    let htmlResponse = String(data: data, encoding: .utf8)!
+                    let startIndex = htmlResponse.range(of: "X-Transmission-Session-Id:")?.upperBound
+                    let endIndex = htmlResponse.range(of: "</code>")?.lowerBound
+                    let diff = startIndex!..<endIndex!
+                    self.sessionID = String(htmlResponse[diff])
+                    Utils.shared.log(msgType: .NeedSessionId, type: .INFO)
+                    self.removeTorrent(id: id)
+                    return
+                }
+                self.getStatus()
+            }.resume()
+        }
+    }
+    
     private func handleResCode(statusCode: Int) -> Int {
         if statusCode == 404 {
             // Server not found

@@ -17,4 +17,5 @@ extension Notification.Name {
     static let userDefaultNeedUpdate = Notification.Name("userDefaultNeedUpdate")
     static let didGotItemsNumber = Notification.Name("didGotItemsNumber")
     static let needCloseOnBoard = Notification.Name("needCloseOnBoard")
+    static let needRemoveTorrent = Notification.Name("needRemoveTorrent")
 }
