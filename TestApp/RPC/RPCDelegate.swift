@@ -18,8 +18,10 @@ public enum RESCODE: Int {
 public protocol RPCClienteDelegate {
     func rpcDidGotTorrentStatus(_ torrents: [Torrent])
     func rpcDidGotStatusCode(_ code: RESCODE)
+    func rpcDidGotNumberOfItems(_ items: [Int])
 }
 extension RPCClienteDelegate {
     func rpcDidGotTorrentStatus(_ torrents: [Torrent]) {}
-    func rpcDidGotStatusCode(_ code: Int) {}
+    func rpcDidGotStatusCode(_ code: RESCODE) {}
+    func rpcDidGotNumberOfItems(_ items: [Int]) {}
 }

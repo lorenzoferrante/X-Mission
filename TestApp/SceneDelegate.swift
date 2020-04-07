@@ -11,13 +11,6 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    
-    /*
-    #if targetEnvironment(macCatalyst)
-    private let playStopToolbarIdentifier = NSToolbarItem.Identifier(rawValue: "PlayStopButton")
-    private let addToolbarIdentifier = NSToolbarItem.Identifier(rawValue: "AddButton")
-    #endif
-    */
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -25,17 +18,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        /*
-        #if targetEnvironment(macCatalyst)
-        let toolbar = createToolbar()
-        
-        if let titlebar = windowScene.titlebar {
-            titlebar.titleVisibility = .hidden
-            titlebar.toolbar = toolbar
-        }
-        #endif
-        */
         
         guard let _ = (scene as? UIWindowScene) else { return }
     }
@@ -71,68 +53,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
         RPCCLient.shared.stopBackgroundThread()
     }
-    
-    /*
-    #if targetEnvironment(macCatalyst)
-    private func createToolbar() -> NSToolbar {
-        let toolbar = NSToolbar(identifier: "CatalystToolbar")
-        toolbar.delegate = self
-        return toolbar
-    }
-    #endif
-    */
 }
-
-/*
-#if targetEnvironment(macCatalyst)
-extension SceneDelegate: NSToolbarDelegate {
-    func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [
-            .flexibleSpace,
-            addToolbarIdentifier,
-            playStopToolbarIdentifier,
-        ]
-    }
-    
-    func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return toolbarDefaultItemIdentifiers(toolbar)
-    }
-    
-    func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
-        if (itemIdentifier == playStopToolbarIdentifier) {
-            let barButtonItem = UIBarButtonItem(barButtonSystemItem: RPCCLient.shared.timerIsValid() ? .play : .pause, target: self, action: #selector(self.toggle))
-            let button = NSToolbarItem(itemIdentifier: itemIdentifier, barButtonItem: barButtonItem)
-            return button
-        } else if (itemIdentifier == addToolbarIdentifier) {
-            let barButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addTorrent))
-            let button = NSToolbarItem(itemIdentifier: itemIdentifier, barButtonItem: barButtonItem)
-            return button
-        }
-        return nil
-    }
-}
-
-@objc extension SceneDelegate {
-    
-    func addTorrent() {
-        let splitVC = window!.rootViewController as! UISplitViewController
-        if let navVC = splitVC.viewControllers[1] as? UINavigationController {
-            if let listVC = navVC.viewControllers[0] as? ListViewController {
-                listVC.performSegue(withIdentifier: "ShowAddView", sender: self)
-            }
-        }
-    }
-    
-    func toggle() {
-        RPCCLient.shared.toggle()
-        window?.windowScene?.titlebar!.toolbar?.removeItem(at: 2)
-        window?.windowScene?.titlebar!.toolbar?.insertItem(withItemIdentifier: playStopToolbarIdentifier, at: 2)
-    }
-    
-}
-
-#endif
-*/
-
-
 

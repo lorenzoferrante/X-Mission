@@ -34,22 +34,6 @@ class ListViewController: UITableViewController, RPCClienteDelegate {
         // Do any additional setup after loading the view.
         RPCCLient.shared.delegate = self
         
-        /*
-        #if !targetEnvironment(macCatalyst)
-        
-        let stopPlayButton = UIBarButtonItem(
-            barButtonSystemItem: RPCCLient.shared.timerIsValid() ? .play : .pause,
-            target: self,
-            action: #selector(toogle))
-        let addTorrentButton = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(self.showAddView))
-        
-        navigationItem.rightBarButtonItems = [stopPlayButton, addTorrentButton]
-        #endif
-        */
-        
         self.title = "All Torrents"
         
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeTitle(_:)), name: .didChangeFilter, object: nil)
@@ -57,6 +41,9 @@ class ListViewController: UITableViewController, RPCClienteDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(showSettingsView), name: .needOpenSettingsView, object: nil)
         
         self.navigationController?.navigationBar.isTranslucent = false
+        
+        let onBoardView = UIHostingController(rootView: OnBoardView())
+        self.present(onBoardView, animated: true)
         
         setUpTableView()
     }
@@ -117,6 +104,10 @@ extension ListViewController {
         } else {
             needDisplayError = true
         }
+    }
+    
+    func rpcDidGotNumberOfItems(_ items: [Int]) {
+        NotificationCenter.default.post(name: .didGotItemsNumber, object: nil, userInfo: ["items": items])
     }
     
 }

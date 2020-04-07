@@ -30,6 +30,7 @@ public enum LogMessage: String {
 
 final class Utils {
     
+    static let FIRST_LAUNCH = "first_launch"
     static let LOG_KEY = "log"
     static let IP = "ip"
     static let PORT = "port"
@@ -41,6 +42,14 @@ final class Utils {
     static let shared = Utils()
     
     // MARK:- Methods
+    public func setFirstLaunch() {
+        if UserDefaults.standard.bool(forKey: Utils.FIRST_LAUNCH) {
+            UserDefaults.standard.set(true, forKey: Utils.FIRST_LAUNCH)
+        } else {
+            UserDefaults.standard.set(true, forKey: Utils.FIRST_LAUNCH)
+        }
+    }
+    
     public func populateUserDefaults() {
         if UserDefaults.standard.value(forKey: Utils.IP) == nil {
             UserDefaults.standard.set("127.0.0.1", forKey: Utils.IP)
