@@ -37,7 +37,7 @@ struct OnBoardView: View {
                 .font(Font.system(size: 20.0, weight: .regular, design: .rounded))
             
             Button(action: {
-                print("Clicked")
+                NotificationCenter.default.post(name: .needCloseOnBoard, object: nil)
             }) {
                 Text("Start X-Mission")
                     .font(Font.system(size: 25.0, weight: .bold, design: .rounded))
