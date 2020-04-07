@@ -570,7 +570,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lorenzoferrante.XMission;
 				PRODUCT_NAME = "X-Mission";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -590,7 +590,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lorenzoferrante.XMission;
 				PRODUCT_NAME = "X-Mission";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

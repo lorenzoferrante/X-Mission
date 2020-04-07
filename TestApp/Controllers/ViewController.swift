@@ -14,11 +14,9 @@ class SplitViewController: UISplitViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        /*
         #if targetEnvironment(macCatalyst)
         self.navigationController?.isNavigationBarHidden = true
         #endif
-        */
     }
 
 }
