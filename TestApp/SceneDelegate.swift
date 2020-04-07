@@ -12,10 +12,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
+    /*
     #if targetEnvironment(macCatalyst)
     private let playStopToolbarIdentifier = NSToolbarItem.Identifier(rawValue: "PlayStopButton")
     private let addToolbarIdentifier = NSToolbarItem.Identifier(rawValue: "AddButton")
     #endif
+    */
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -24,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        /*
         #if targetEnvironment(macCatalyst)
         let toolbar = createToolbar()
         
@@ -32,6 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             titlebar.toolbar = toolbar
         }
         #endif
+        */
         
         guard let _ = (scene as? UIWindowScene) else { return }
     }
@@ -68,6 +72,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         RPCCLient.shared.stopBackgroundThread()
     }
     
+    /*
     #if targetEnvironment(macCatalyst)
     private func createToolbar() -> NSToolbar {
         let toolbar = NSToolbar(identifier: "CatalystToolbar")
@@ -75,8 +80,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return toolbar
     }
     #endif
+    */
 }
 
+/*
 #if targetEnvironment(macCatalyst)
 extension SceneDelegate: NSToolbarDelegate {
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
@@ -125,6 +132,7 @@ extension SceneDelegate: NSToolbarDelegate {
 }
 
 #endif
+*/
 
 
 

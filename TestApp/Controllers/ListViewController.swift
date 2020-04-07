@@ -34,6 +34,7 @@ class ListViewController: UITableViewController, RPCClienteDelegate {
         // Do any additional setup after loading the view.
         RPCCLient.shared.delegate = self
         
+        /*
         #if !targetEnvironment(macCatalyst)
         
         let stopPlayButton = UIBarButtonItem(
@@ -47,6 +48,7 @@ class ListViewController: UITableViewController, RPCClienteDelegate {
         
         navigationItem.rightBarButtonItems = [stopPlayButton, addTorrentButton]
         #endif
+        */
         
         self.title = "All Torrents"
         
