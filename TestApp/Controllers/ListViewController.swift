@@ -53,6 +53,7 @@ class ListViewController: UITableViewController, RPCClienteDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeTitle(_:)), name: .didChangeFilter, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showLogsView), name: .needOpenLogView, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showSettingsView), name: .needOpenSettingsView, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(closeOnBoard), name: .needCloseOnBoard, object: nil)
         
         self.navigationController?.navigationBar.isTranslucent = false
         
@@ -157,5 +158,9 @@ extension ListViewController {
                 }
             }
         }
+    }
+    
+    private func closeOnBoard() {
+        self.dismiss(animated: true, completion: nil)
     }
 }

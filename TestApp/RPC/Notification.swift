@@ -16,4 +16,5 @@ extension Notification.Name {
     static let needOpenSettingsView = Notification.Name("needOpenSettingsView")
     static let userDefaultNeedUpdate = Notification.Name("userDefaultNeedUpdate")
     static let didGotItemsNumber = Notification.Name("didGotItemsNumber")
+    static let needCloseOnBoard = Notification.Name("needCloseOnBoard")
 }
