@@ -56,6 +56,9 @@ class ListViewController: UITableViewController, RPCClienteDelegate {
         
         self.navigationController?.navigationBar.isTranslucent = false
         
+        let onBoardView = UIHostingController(rootView: OnBoardView())
+        self.present(onBoardView, animated: true)
+        
         setUpTableView()
     }
     
@@ -115,6 +118,10 @@ extension ListViewController {
         } else {
             needDisplayError = true
         }
+    }
+    
+    func rpcDidGotNumberOfItems(_ items: [Int]) {
+        NotificationCenter.default.post(name: .didGotItemsNumber, object: nil, userInfo: ["items": items])
     }
     
 }

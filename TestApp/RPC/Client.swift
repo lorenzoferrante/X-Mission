@@ -101,8 +101,6 @@ class RPCCLient: NSObject {
         }
     }
     
-    @objc func addTorrent() {}
-    
     public func getStatus(_ filter: Filter = .ALL) {
         appliedFilter = filter
         var req = URLRequest(url: URL(string: baseURL)!)
@@ -168,6 +166,7 @@ class RPCCLient: NSObject {
                 
                 if let torrents = resDecoded.arguments!.torrents {
                     self.applyFilter(filter, list: torrents)
+                    self.delegate.rpcDidGotNumberOfItems(self.countItems(torrents))
                 }
             }.resume()
         }
@@ -348,6 +347,21 @@ class RPCCLient: NSObject {
             return 1
         }
         return -1
+    }
+    
+    private func countItems(_ torrents: [Torrent]) -> [Int] {
+        return [
+            // ALL
+            torrents.count,
+            // DOWNLOADING
+            torrents.filter({ [3, 4].contains($0.status!) }).count,
+            // SEEDING
+            torrents.filter({ [5, 6].contains($0.status!) }).count,
+            // PAUSED
+            torrents.filter({ $0.status == 0 }).count,
+            // DONE
+            torrents.filter({ $0.percentDone == 1.0 }).count,
+        ]
     }
 
 }

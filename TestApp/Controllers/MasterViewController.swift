@@ -9,12 +9,21 @@
 import Foundation
 import UIKit
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, RPCClienteDelegate {
+    
     
     let menuFirst = ["All Torrents", "Downloading", "Seeding", "Paused", "Done"]
     let menuSecond = ["Settings", "Logs"]
     let menuIconsFirst = ["list.bullet", "arrow.down", "arrow.up", "pause.circle.fill", "doc.fill"]
     let menuIconsSecond = ["gear", "exclamationmark.bubble"]
+    
+    var items: [Int]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     var deatailTitle = "All Torrents"
     
@@ -22,8 +31,10 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         self.title = "Mission"
         
-        self.navigationController?.navigationBar.isTranslucent = false
+        NotificationCenter.default.addObserver(self, selector: #selector(updateItemsNumber(_:)), name: .didGotItemsNumber, object: nil)
         
+        self.navigationController?.navigationBar.isTranslucent = false
+
         setUpTableView()
     }
     
@@ -58,8 +69,10 @@ class MasterViewController: UITableViewController {
             menuIcon = menuIconsSecond
         }
         
-        let menuItem = MenuListView(menuIcon: menuIcon[indexPath.row], menuLabel: menu[indexPath.row])
-        cell.host(view: menuItem, parent: self)
+        cell.host(parent: self,
+                  icon: menuIcon[indexPath.row],
+                  label: menu[indexPath.row],
+                  items: ItemsObserver(items: (indexPath.section == 0 ? (items != nil ? items![indexPath.row]: 0) : 0)))
         
         return cell
     }
@@ -109,6 +122,18 @@ class MasterViewController: UITableViewController {
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+}
+
+@objc extension MasterViewController {
+    
+    private func updateItemsNumber(_ noti: Notification) {
+        if let userInfo = noti.userInfo {
+            if let items = userInfo["items"] as? [Int] {
+                self.items = items
+            }
+        }
     }
     
 }

@@ -15,4 +15,5 @@ extension Notification.Name {
     static let needOpenLogView = Notification.Name("needOpenLogView")
     static let needOpenSettingsView = Notification.Name("needOpenSettingsView")
     static let userDefaultNeedUpdate = Notification.Name("userDefaultNeedUpdate")
+    static let didGotItemsNumber = Notification.Name("didGotItemsNumber")
 }

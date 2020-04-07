@@ -13,12 +13,14 @@ import SwiftUI
 class MenuTableViewCell<Content: View>: UITableViewCell {
     private var controller: UIHostingController<MenuListView>?
     
-    func host(view: MenuListView, parent: UIViewController) {
+    func host(parent: UIViewController, icon: String, label: String, items: ItemsObserver) {
         if let controller = controller {
-            controller.rootView = view
+            let menuView = MenuListView(menuIcon: icon, menuLabel: label, items: items)
+            controller.rootView = menuView
             controller.view.layoutIfNeeded()
         } else {
-            let swiftUICellViewController = UIHostingController(rootView: view)
+            let menuView = MenuListView(menuIcon: icon, menuLabel: label, items: items)
+            let swiftUICellViewController = UIHostingController(rootView: menuView)
             controller = swiftUICellViewController
             swiftUICellViewController.view.backgroundColor = .clear
 

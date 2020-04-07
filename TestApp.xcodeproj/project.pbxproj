@@ -30,6 +30,7 @@
 		5053C615243B4943001B81F1 /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5053C614243B4943001B81F1 /* EmptyTableViewCell.swift */; };
 		50760ADC2439F08E00EDA2A8 /* MenuListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50760ADB2439F08E00EDA2A8 /* MenuListView.swift */; };
 		50760ADE2439F38C00EDA2A8 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50760ADD2439F38C00EDA2A8 /* MenuTableViewCell.swift */; };
+		507F3DBF243C99F1004A20AF /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507F3DBE243C99F1004A20AF /* OnBoardView.swift */; };
 		50CC8DE02438F9EA00A4E7A8 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CC8DDF2438F9EA00A4E7A8 /* Client.swift */; };
 		50CC8DE224391C7000A4E7A8 /* RPCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CC8DE124391C7000A4E7A8 /* RPCDelegate.swift */; };
 		50CC8DE624391F9300A4E7A8 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CC8DE524391F9300A4E7A8 /* ListViewController.swift */; };
@@ -86,6 +87,7 @@
 		5053C614243B4943001B81F1 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
 		50760ADB2439F08E00EDA2A8 /* MenuListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListView.swift; sourceTree = "<group>"; };
 		50760ADD2439F38C00EDA2A8 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		507F3DBE243C99F1004A20AF /* OnBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
 		50CC8DDF2438F9EA00A4E7A8 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		50CC8DE124391C7000A4E7A8 /* RPCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCDelegate.swift; sourceTree = "<group>"; };
 		50CC8DE524391F9300A4E7A8 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				501E1FFD2439424000316AAC /* TorrentTableViewCell.swift */,
 				50760ADB2439F08E00EDA2A8 /* MenuListView.swift */,
 				50760ADD2439F38C00EDA2A8 /* MenuTableViewCell.swift */,
+				507F3DBE243C99F1004A20AF /* OnBoardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				50760ADC2439F08E00EDA2A8 /* MenuListView.swift in Sources */,
 				5053C613243B4864001B81F1 /* EmptyCell.swift in Sources */,
 				50D8CE2F24393DC800E24B6A /* ProgressBar.swift in Sources */,
+				507F3DBF243C99F1004A20AF /* OnBoardView.swift in Sources */,
 				50CC8DE624391F9300A4E7A8 /* ListViewController.swift in Sources */,
 				5053C60D243B1FA0001B81F1 /* Utils.swift in Sources */,
 				5053C601243A14FD001B81F1 /* TextFieldCell.swift in Sources */,
@@ -562,6 +566,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TestApp/TestApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = XYA85FESD6;
 				INFOPLIST_FILE = TestApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -582,6 +587,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TestApp/TestApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = XYA85FESD6;
 				INFOPLIST_FILE = TestApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
