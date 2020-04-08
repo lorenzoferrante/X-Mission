@@ -15,6 +15,12 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     
     let sectionTwo = ["Refresh Rate"]
     var placeholderTwo = ["3"]
+    let footerTwo = "Refresh Rate (in seconds) indicates how often an update from the server will be requested (recommended values are 3-5 seconds)"
+    
+    let sectionThree = ["Download Directory"]
+    var placeholderThree = ["define this var"]
+    let footerThree = "Download Directory indicates the download location in you server"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,12 +51,16 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             String(UserDefaults.standard.value(forKey: Utils.REFRESH) as! Int)
         ]
         
+        placeholderThree = [
+            UserDefaults.standard.value(forKey: Utils.DOWNLOADDIR) as! String
+        ]
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,6 +68,8 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             return sectionOne.count
         } else if section == 1 {
             return sectionTwo.count
+        } else if section == 2 {
+            return sectionThree.count
         }
         return 0
     }
@@ -76,6 +88,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             section = sectionTwo
             placeholder = placeholderTwo
         }
+        if indexPath.section == 2 {
+            section = sectionThree
+            placeholder = placeholderThree
+        }
         
         cell.label.text = section[indexPath.row]
         cell.textField.placeholder = placeholder[indexPath.row]
@@ -85,6 +101,17 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if section == 1 {
+            return footerTwo
+        }
+        
+        if section == 2 {
+            return footerThree
+        }
+        
+        return nil
+    }
 
 }
 

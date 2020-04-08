@@ -38,6 +38,7 @@ final class Utils {
     static let USER = "user"
     static let PWD = "pwd"
     static let REFRESH = "refresh"
+    static let DOWNLOADDIR = "downloadDir"
     
     static let shared = Utils()
     
@@ -74,6 +75,10 @@ final class Utils {
         if UserDefaults.standard.value(forKey: Utils.REFRESH) == nil {
             UserDefaults.standard.set(3, forKey: Utils.REFRESH)
         }
+        
+        if UserDefaults.standard.value(forKey: Utils.DOWNLOADDIR) == nil {
+            UserDefaults.standard.set("/var/tmp/", forKey: Utils.DOWNLOADDIR)
+        }
     }
     
     public func didSetUserDefault(_ type: String, val: Any) {
@@ -90,6 +95,8 @@ final class Utils {
             UserDefaults.standard.set(val, forKey: Utils.PWD)
         case Utils.REFRESH:
             UserDefaults.standard.set(val, forKey: Utils.REFRESH)
+        case Utils.DOWNLOADDIR:
+            UserDefaults.standard.set(val, forKey: Utils.DOWNLOADDIR)
         default:
             break
         }
@@ -119,6 +126,12 @@ final class Utils {
     
     public func formatLogs(_ logs: String) -> String {
         return logs.split(separator: "\n").reversed().joined(separator: "\n")
+    }
+    
+    public func encodeTorrentFile(path: String) {
+        /*
+        if let filePath = Bundle.main.path(forResource: "marvel", ofType: "torrent") {}
+        */
     }
     
 }

@@ -17,6 +17,7 @@
 		500F729D2438B19D00F6980E /* TestAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500F729C2438B19D00F6980E /* TestAppUITests.swift */; };
 		500F72AC2438E21200F6980E /* Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500F72AB2438E21200F6980E /* Specs.swift */; };
 		501E1FFE2439424000316AAC /* TorrentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501E1FFD2439424000316AAC /* TorrentTableViewCell.swift */; };
+		504E7FFC243CF226003CADCA /* marvel.torrent in Resources */ = {isa = PBXBuildFile; fileRef = 504E7FFB243CF226003CADCA /* marvel.torrent */; };
 		5053C5FD243A149E001B81F1 /* AddTorrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5053C5FC243A149E001B81F1 /* AddTorrentViewController.swift */; };
 		5053C601243A14FD001B81F1 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5053C5FF243A14FD001B81F1 /* TextFieldCell.swift */; };
 		5053C602243A14FD001B81F1 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5053C600243A14FD001B81F1 /* TextFieldCell.xib */; };
@@ -74,6 +75,7 @@
 		500F72AA2438B1A200F6980E /* TestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestApp.entitlements; sourceTree = "<group>"; };
 		500F72AB2438E21200F6980E /* Specs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specs.swift; sourceTree = "<group>"; };
 		501E1FFD2439424000316AAC /* TorrentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentTableViewCell.swift; sourceTree = "<group>"; };
+		504E7FFB243CF226003CADCA /* marvel.torrent */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = marvel.torrent; sourceTree = "<group>"; };
 		5053C5FC243A149E001B81F1 /* AddTorrentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTorrentViewController.swift; sourceTree = "<group>"; };
 		5053C5FF243A14FD001B81F1 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		5053C600243A14FD001B81F1 /* TextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 		500F72792438B19C00F6980E /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
+				504E7FFB243CF226003CADCA /* marvel.torrent */,
 				500F72AA2438B1A200F6980E /* TestApp.entitlements */,
 				500F727A2438B19C00F6980E /* AppDelegate.swift */,
 				500F727C2438B19C00F6980E /* SceneDelegate.swift */,
@@ -341,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				500F72872438B19D00F6980E /* LaunchScreen.storyboard in Resources */,
+				504E7FFC243CF226003CADCA /* marvel.torrent in Resources */,
 				500F72842438B19D00F6980E /* Assets.xcassets in Resources */,
 				500F72822438B19C00F6980E /* Main.storyboard in Resources */,
 				5053C602243A14FD001B81F1 /* TextFieldCell.xib in Resources */,
