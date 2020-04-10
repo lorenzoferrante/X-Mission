@@ -48,9 +48,9 @@ class AddTorrentViewController: UITableViewController, UITextFieldDelegate {
         cell.textField.delegate = self
         cell.textField.tag = indexPath.row
         
-        if indexPath.row == 0 {
+        /*if indexPath.row == 0 {
             cell.textField.text = "magnet:?xt=urn:btih:CE6D2A6BBC439A8F6B94B23BA63B04164400FE3B&dn=Parasite&tr=http://track.one:1234/announce&tr=udp://track.two:80"
-        }
+        }*/
         
         cell.label.text = list[indexPath.row]
         cell.textField.placeholder = placeholder[indexPath.row]
